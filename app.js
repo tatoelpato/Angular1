@@ -7,22 +7,22 @@
     LunchController.$inject = ['$scope'];
 
     function LunchController($scope) {
-        $scope.dishes = '';
+        $scope.item = '';
         $scope.message = '';
         $scope.checked = false;
 
         $scope.checkList = function() {
-            if ($scope.dishes.trim().length === 0) {
+            if ($scope.item.trim().length === 0) {
                 $scope.empty = true;
             } else {
                 $scope.checked = true;
                 $scope.empty = false;
-                var arrayDishes = $scope.dishes.split(',');
-                var arrayDishesWithoutEmptys = arrayDishes.filter(function(v) {
+                let items = $scope.item.split(',');
+                let noItems = items.filter(function(v) {
                     return v.trim() !== '';
                 });
 
-                if (arrayDishesWithoutEmptys.length <= 3) {
+                if (noItems.length <= 3) {
                     $scope.message = 'Enjoy!';
                 } else {
                     $scope.message = 'Too much!';
